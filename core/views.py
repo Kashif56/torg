@@ -25,8 +25,11 @@ one_week_ago = datetime.datetime.today() - datetime.timedelta(days=7)
 
 def Home(request):
     if request.user.is_authenticated:
-        if request.user.userprofile.organizer == True and request.user.userprofile.is_verified == True:
-            return redirect('dashboard:dashboard_home')
+        if request.user.userprofile:
+            if request.user.userprofile.organizer == True and request.user.userprofile.is_verified == True:
+                return redirect('dashboard:dashboard_home')
+            else:
+                return redirect('core:Tournaments')
         else:
             return redirect('core:Tournaments')
 
