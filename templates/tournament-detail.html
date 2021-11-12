@@ -1,0 +1,149 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- CSS HERE -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/tournament-detail.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% endblock css %}
+<!-- CSS HERE -->
+
+{% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+
+<!-- CONTENT HERE -->
+{% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>TOURNAMENT DETAIL</h2>
+    <p><a href="{% url 'core:Home' %}">HOME</a> > <a href="{% url 'core:Tournaments' %}">TOURNAMENT</a> > <a href="{% url 'core:Tournament_Detail' tournament.id %}">{{ tournament.title | upper }}</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+
+
+
+<!-- ------------------------------- -->
+<!-- Tournament Detail Start -->
+<!-- ---------------------------------- -->
+<div class="detail-container">
+    <img src="{{ tournament.image.url }}">
+
+
+    <div class="text">
+        <h4>{{ tournament.title }}<span> - {{ tournament.date_created | timesince }} ago
+            <!-- If user is an Organizer of Tournament -->
+            {% if request.user == tournament.user %}
+    <a href="" class="btn-secondary"> (Edit)</a> {% endif %}
+        </span></h4>
+        <div class="user">
+            <img src="{% static 'img/user.svg' %}">
+            <p><a href="{% url 'account:UserProfile' tournament.user.id %}">{{ tournament.user.username }}</a></p>
+        </div>
+
+        <p>{{ tournament.description | safe }}</p>
+
+        <br><br>
+
+        <p>Organized by: <span>{{ tournament.user.userprofile.name }}</span></p>
+        <p>Game : <span>PUBG Mobile</span></p>
+        <p>Game Type: <span>Squad</span></p>
+        <p>Registeration Fee : {% if tournament.fee %}
+            <span>${{ tournament.fee }}</span> {% else %}
+            <span>Free</span> {% endif %}
+        </p>
+        <p>Slots: <span>{{ tournament.slots }}</span></p>
+        <p>Prize Pool : <span>${{ tournament.prize_pool }}</span></p>
+        <p>Last Date : <span>{{ tournament.last_date|date:'Y-m-d' }}</span></p>
+
+
+        <br><br><br><br>
+        <!-- Complex Conditions -->
+        {% if pending_registeration == False and registered == False %} {% if tournament.slots >= 1 %}
+        <a href="{{ tournament.get_registeration_url }}" class="btn-primary">Register Now</a>
+        <a href="{% url 'core:RegisteredTeams' tournament.id %}">Registered Teams</a>
+        <a href="{% url 'core:Standings' tournament.id %}" class="btn-primary">Final Standings</a>
+        <br><br><br> {% else %}
+        <h4>No Slots Available</h4>
+        {% endif %}
+
+
+        <!-- If team is registered -->
+        {% elif registered == True %}
+        <div class="box">
+            <span>Your team is registered in {{ tournament.title }}.</span><br><br><br>
+            <a href="{{ tournament.get_cancel_registeration_url }}" class="btn-primary">Cancel Registeration</a>
+            <a href="{% url 'core:RegisteredTeams' tournament.id %}">Registered Teams</a>
+            <a href="{% url 'core:Standings' tournament.id %}" class="btn-primary">Final Standings</a>
+        </div>
+
+
+        <!-- If registeration is in Pending -->
+        {% elif pending_registeration == True %}
+        <div class="box">
+            <span>Your registeration is Pending in {{ tournament.title }}.</span><br><br><br>
+            <a href="{{ tournament.get_cancel_registeration_url }}" class="btn-primary">Cancel Registeration</a>
+            <a href="{% url 'core:RegisteredTeams' tournament.id %}">Registered Teams</a>
+            <a href="{% url 'core:Standings' tournament.id %}" class="btn-primary">Final Standings</a>
+        </div>
+
+        {% endif %}
+
+
+
+    </div>
+    <br><br>
+    <hr>
+
+    <!-- Like and Share -->
+    <div class="actions">
+        <p>Likes <span><i class="fa fa-thumbs-up"></i></span> : <span>{{ tournament.likes.count }}</span></p>
+    </div>
+    <div class="actions">
+        {% if not liked %}
+        <a href="{% url 'core:LikeTournament' tournament.id %}" class=""><i class="fa fa-thumbs-up"></i> Like</a> {% else %}
+        <a href="{% url 'core:LikeTournament' tournament.id %}" class="btn-info"><i class="fa fa-thumbs-up"></i> Like</a> {% endif %}
+        <a href=""><i class="fa fa-share" aria-hidden="true"></i> Share</a>
+    </div>
+
+    <div class="comment-section">
+        <div class="comment-box">
+            <h3>Comments <span>( {{ tournament.comments.count }} )</span></h3>
+            {% for x in tournament.comments.all %}
+            <div class="comment">
+                <div class="upper">
+                    <img src="{% static 'img/user.svg' %}">
+                    <h4><a href="{% url 'account:UserProfile' x.user.id %}">{{ x.user.userprofile.name }}</a></h4>
+                    <p>- {{ x.timestamp }}</p>
+                    {% if request.user == x.user %}
+                    <a href="{% url 'core:DeleteComment' tournament.id x.id %}" style="color:red;"><i class="fa fa-trash"></i></a> {% endif %}
+                </div>
+                <div class="lower">
+                    <p>{{ x.comment }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="comment">
+                <h3 style="color: red;">No Comment</h3>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="comment-input">
+            <h3>Leave a Comment</h3>
+            <div class="input">
+                <form action="{% url 'core:AddComment' tournament.id %}" method="post">
+                    {% csrf_token %}
+                    <textarea name="comment" id="" cols="50" rows="10" required placeholder="Comment here..."></textarea>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Comment</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<br><br>
+<hr> {% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}"> {% endblock %} {% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>CREATE AN ACCOUNT</h2>
+    <p><a href="">HOME</a> > <a href="">CREATE ACCOUNT</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+<br><br><br>
+<section class="container">
+    <div class="image">
+        <img src="{% static 'img/account.jpg' %}">
+    </div>
+    <div class="register-form">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <input required type="text" placeholder="Username:" name="username"><br>
+            <input required type="email" placeholder="Email" name="email"><br>
+            <input required type="password" placeholder="Passwword:" name="pass1"><br>
+            <input required type="password" placeholder="Confirm Passwword:" name="pass2"><br>
+            <button type="submit" class="btn-center btn btn-primary">Sign up</button>
+        </form>
+        <p>Already have an Account? <a href="{% url 'account:Login' %}">Login</a></p>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}"> {% endblock css %} {% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+
+<!-- Contetn Here -->
+{% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>UPDATE PROFILE</h2>
+    <p><a href="{% url 'core:Home' %}">HOME</a> > <a href="">ACCOUNT</a> > <a href="">UPDATE PROFILE</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+<br><br>
+<section class="container">
+    <div class="image">
+        <img src="{% static 'img/account.jpg' %}">
+    </div>
+    <div class="register-form">
+        <form action="." method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- LOGIN DETAILS -->
+            <label for="">Username:</label> <br>
+            <input type="text" name="username" value="{{ request.user.username }}">
+            <br>
+            <label for="">Email (optional):</label> <br>
+            <input type="email" name="email" value="{{ request.user.email }}">
+            <br><br>
+            <br><br>
+
+
+
+
+            <!-- Extra INFO -->
+            <label for="name">Full Name:</label><br>
+            <!-- name -->
+            {{ form.name }}
+            <br>
+            <br>
+            <label for="name">Bio:</label><br>
+            <!-- name -->
+            {{ form.bio }}
+            <br>
+            <label for="contact">Contact Number:</label><br>
+            <!-- Contact Number -->
+            {{ form.contact }}
+
+            <br>
+            <div class="flex-items">
+                <label for="organizer" class="organizer-label">Become an Organizer:</label>
+                <div class="item">
+                    {{ form.organizer }}
+                </div>
+
+            </div>
+            <br>
+
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+
+    </div>
+</section>
+
+
+
+{% endblock %}

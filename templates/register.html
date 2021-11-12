@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">{% endblock css %} {% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+<!-- Content here -->
+{% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>REGISTER IN TOURNAMENT</h2>
+    <p><a href="">HOME</a> > <a href="">TOURNAMENT</a> > <a href="">REGISTER</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+<h2 class="subtitle">Register in Tournament</h2>
+<section class="container">
+    <div class="image">
+        <img src="{% static 'img/Register.jpg' %}">
+    </div>
+    <div class="register-form">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <label for="tournament">You are Registering for:</label><br>
+            <input type="text" value="{{ tournament.title }}" name='tournament' id='tournament' readonly>
+
+            <!-- Form Below -->
+
+            {{ form.team_name }} <br> {{ form.team_number }} <br> {{ form.player1_ign }} <br> {{ form.player2_ign }} <br> {{ form.player3_ign }} <br> {{ form.player4_ign}}
+            <br> {{ form.player5_ign }} <br><br><br>
+
+
+
+
+            <button type="submit" class="btn-center btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section>
+
+
+{% endblock content %}

@@ -1,0 +1,503 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(255, 222, 222);
+}
+
+.navbar {
+    position: sticky !important;
+    background-color: #33D98D;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 15vh;
+}
+
+.logo {
+    margin-left: 10%;
+    width: 100px;
+    height: 12vh;
+    margin-right: 5%;
+}
+
+a {
+    text-decoration: none;
+    color: royalblue;
+}
+
+.logo a h1 {
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.nav-links {
+    align-items: center;
+    margin-left: 180px;
+    display: flex;
+}
+
+.nav-links li {
+    list-style: none;
+    padding: 0 20px;
+}
+
+.nav-links a {
+    padding: 4px 0px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+    color: rgb(0, 0, 0);
+    transition: 0.4s ease-in-out;
+}
+
+.active {
+    color: white;
+    border-bottom: 2px white solid;
+}
+
+.burger {
+    display: none;
+    position: absolute;
+    top: 5%;
+    right: 4%;
+    cursor: pointer;
+}
+
+.line {
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    height: 5px;
+    margin: 5px;
+}
+
+.account {
+    display: flex;
+    margin-left: 200px;
+}
+
+.account-links {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.account a {
+    padding: 10px 20px;
+    box-shadow: -3px -3px 4px rgba(255, 255, 255, 0.205), 4px 4px 10px rgba(0, 0, 0, 0.199);
+    border-radius: 20px;
+}
+
+.logout {
+    display: flex;
+    margin-left: 120px;
+    align-items: center;
+    /* border: 2px white solid; */
+    /* border-radius: 20px; */
+}
+
+.user-img {
+    width: 40px;
+    height: 40px;
+    color: white;
+    /* border: 2px white solid; */
+    /* padding: 5px; */
+}
+
+.logout-links li {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    list-style: none;
+}
+
+.logout-links a {
+    padding: 10px 20px;
+    box-shadow: -3px -3px 4px rgba(255, 255, 255, 0.205), 4px 4px 10px rgba(0, 0, 0, 0.199);
+    border-radius: 20px;
+}
+
+
+/* Utility Classes */
+
+.btn-primary {
+    text-decoration: none;
+    padding: 15px 30px;
+    background-color: #FB0A36;
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.btn-primary:hover {
+    transition: 0.4s ease-out;
+    background-color: #272C4E;
+}
+
+.item-link {
+    text-decoration: none;
+    color: black;
+}
+
+.subtitle {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: #272C4E;
+    display: inline-block;
+}
+
+
+/* Utilities CLasses END */
+
+
+/* ======================================= */
+
+.banner {
+    width: 100%;
+    background-color: #1FB973;
+    height: 300px;
+    padding-top: 130px;
+}
+
+.banner h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.banner p {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+}
+
+.banner a {
+    padding: 0 5px;
+    color: white;
+}
+
+.banner a:hover {
+    color: #272C4E;
+}
+
+
+/* Banner Area Start */
+
+
+/* BAnner Area End */
+
+
+/* ======================================== */
+
+.detail-container {
+    margin: 10% 20%;
+    width: 60%;
+}
+
+.detail-container img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.text {
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user img {
+    margin-right: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.user p {
+    color: royalblue !important;
+    font-weight: bold;
+}
+
+.text p {
+    color: rgb(80, 80, 80);
+    line-height: 30px;
+}
+
+.text span {
+    font-weight: bold;
+    color: royalblue;
+}
+
+.text h4 {
+    color: #111327;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.text h4 span {
+    color: rgb(73, 73, 73);
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.text a {
+    margin-right: 30px;
+}
+
+.text a:hover {
+    transition: 1s;
+    color: rgb(0, 0, 0);
+}
+
+.paginate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+.previous {
+    padding: 8px 20px;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    background-color: royalblue;
+    margin-right: 50px;
+}
+
+.previous:hover {
+    color: white;
+    background-color: #111327;
+}
+
+.next {
+    border-radius: 5px;
+    padding: 8px 20px;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    background-color: royalblue;
+    margin-left: 50px;
+}
+
+.next:hover {
+    color: white;
+    background-color: #111327;
+}
+
+.page {
+    padding: 5px 10px;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: gray;
+    margin: 2px;
+}
+
+.page:hover {
+    background-color: royalblue;
+    color: white;
+}
+
+.current {
+    background-color: royalblue;
+    color: white;
+}
+
+
+/* Featured Tournament End */
+
+
+/* Email Section Start */
+
+.btn {
+    border: none;
+    outline: none;
+}
+
+.email {
+    background-color: #272C4E;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+    display: flex;
+}
+
+.email-title {
+    color: white;
+    font-size: 25px;
+    letter-spacing: 3px;
+    margin-left: 15%;
+    margin-right: 5%;
+}
+
+form {
+    margin-left: 15%;
+}
+
+input {
+    /* margin-left: 10%; */
+    width: 350px;
+    padding: 15px 10px;
+    background-color: #111327;
+    border-radius: 20px;
+    color: white;
+    border: 1px black solid;
+}
+
+input:focus {
+    outline: none;
+    border: 2px white solid;
+}
+
+.messages {
+    width: 100%;
+}
+
+.message {
+    padding: 20px;
+    background-color: lightgreen;
+}
+
+.empty {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empty p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* Email Section End */
+
+
+/* Footer */
+
+footer {
+    display: flex;
+    background-color: #33D98D;
+    height: 40vh;
+}
+
+.Follow {
+    width: 25%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 10%;
+    line-height: 40px;
+}
+
+.Follow li {
+    list-style: none;
+}
+
+.Follow a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.Follow a:hover {
+    font-size: 18px;
+}
+
+.title {
+    letter-spacing: 3px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    list-style: none;
+}
+
+.contact {
+    width: 25%;
+    margin-left: 7%;
+    margin-top: 3%;
+    line-height: 40px;
+}
+
+.contact li {
+    color: white;
+    list-style: none;
+}
+
+.contact a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.contact a:hover {
+    font-size: 18px;
+}
+
+.methods {
+    width: 25%;
+    margin-top: 3%;
+    margin-left: 10%;
+    line-height: 40px;
+}
+
+.methods li {
+    color: white;
+    list-style: none;
+}
+
+@media (max-width:768px) {
+    .navbar {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+        height: 300px;
+    }
+    .nav-links {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+    }
+    .nav-links li {
+        padding: 10px;
+    }
+    .logo {
+        margin-left: -30%;
+    }
+    .burger {
+        top: 3%;
+        display: block;
+    }
+    .v-nav-resp {
+        opacity: 0;
+    }
+    .h-nav-resp {
+        height: 72px;
+    }
+    .account {
+        padding-top: 20px;
+        flex-direction: column;
+        margin-left: -10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .account-links {
+        padding-bottom: 20px;
+    }
+}

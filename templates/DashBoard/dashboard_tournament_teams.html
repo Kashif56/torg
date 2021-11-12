@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | {{ tournament.title }} Registered Teams</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <style>
+        .bg-black {
+            background-color: rgb(37, 35, 35);
+        }
+        
+        .text-gray {
+            color: rgb(173, 173, 173);
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand ml-5" href="{% url 'dashboard:dashboard_home' %}">
+            <h1>Dashboard</h1>
+        </a>
+        <ul class="nav justify-content-center mr-5">
+            <li class="nav-item">
+                <a class="nav-link text-info" href="{% url 'dashboard:db_create_tournament' %}"><span><i class="fa fa-plus-circle"></i></span> Host Tournament </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'core:Tournaments' %}" class="nav-link text-info">
+                    <span class=""><i class="fa fa-list-alt"></i></span> Tournaments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link text-info"><span><i class="fa fa-mobile mr-1"></i></span>Contact us</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'account:UserProfile' request.user.id %}" class="nav-link text-info"><span><i class="fa fa-user mr-1"></i></span>Profile</a>
+            </li>
+        </ul>
+
+
+
+
+
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %}
+
+    <!-- Main Body Start -->
+    <div class="d-flex flex-row bg-black pt-3 mb-5">
+        <!-- First Side -->
+        <div class="w-25 bg-black">
+            <ul class="list-unstyled ml-5 pl-3 text-white">
+                <li class="mb-3">
+                    <h4 class="text-primary">Tournaments</h4>
+                </li>
+                {% for x in objects %} {% if title == x.title %}
+                <li class="ml-3  mb-3">
+                    <a class="text-warning" href="{{ x.id }}/tournament-detail/">{{ x.title }}</a>
+                </li>
+                {% else %}
+                <li class="ml-3  mb-3">
+                    <a class="text-white" href="{{ x.id }}/tournament-detail/">{{ x.title }}</a>
+                </li>
+                {% endif %} {% empty %}
+                <li class="ml-3  mb-3">
+                    <span>Oops! No Tournaments</span><br>
+                    <a class="btn btn-success mt-2" href="{% url 'dashboard:db_create_tournament' %}"><span><i class="fa fa-plus-circle" aria-hidden="true"></i></span> Host Tournament </a>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <!-- Second Side -->
+        <div class="mb-5 mr-5 w-75">
+            <h2 class="text-primary">Registered Teams in {{ tournament.title }}</h2>
+            <div class="table-responsive table-hover table-dark mt-5">
+                <table class="table">
+                    <tr class="text-info">
+                        <th>S.No</th>
+                        <th>Team Name</th>
+                        <th>Contact Number</th>
+                        <th>Date Registered</th>
+                        <th>Is Registered</th>
+                        <th>Action</th>
+                    </tr>
+
+                    {% for team in tournament.teams.all %}
+                    <tr class="text-white">
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            <a href="{% url 'dashboard:db_tournament_team_detail' tournament.title team.team_name %}" class="text-white">{{ team.team_name }}</a>
+                        </td>
+                        <td>{{ team.team_number }}</td>
+                        <td>{{ team.date_registered | date:'d-m-Y , h:i A' }}</td>
+                        {% if team.is_registered == True %}
+                        <td>Registered <i class="fa fa-check text-success"></i></td>
+                        {% else %}
+                        <td>
+                            <a class="btn btn-primary" href="{% url 'dashboard:AcceptRegisteration' team.user.id tournament.id %}">Accept</a>
+                        </td>
+                        {% endif %}
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'dashboard:remove_team' tournament.title team.team_name %}">Remove Team</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td class="text-warning h3" colspan="12">
+                            No Teams Registered in {{ tournament.title }}
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="{% url 'dashboard:db_tournament_detail' tournament.id %}" class="btn btn-primary">Go Back</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+<!-- Javascript -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</html>

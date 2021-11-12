@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>T-ORG | {{ tournament.title }} Standings</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico'%}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css'%}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css'%}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css'%}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <h1 class="text-center text-white mb-5">Final Standings</h1>
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+
+                                <th class="column1">Team Name</th>
+                                <th class="column3">Tournament</th>
+                                <th class="column3">Rank</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for result in standings %}
+                            <tr>
+
+                                <td class="column1">{{ result.team.team_name }}</td>
+                                <td class="column3">{{ result.tournament.title }}</td>
+                                <td class="column3">{{ result.rank }}</td>
+
+                            </tr>
+
+                            <!-- If empty -->
+                            {% empty %}
+                            <tr>
+                                <td colspan='4' class="text-center text-danger p-4">
+                                    <h2>No Standings of {{ result.tournament.title }}</h2>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+
+                    </table>
+                    <a href="{% url 'core:Tournament_Detail' tournament.id %}" class="btn btn-dark mt-5">Back to Tournament Detail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

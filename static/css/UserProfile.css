@@ -1,0 +1,341 @@
+.btn-info {
+    margin-right: 10px;
+    padding: 8px 20px;
+    background-color: royalblue;
+    color: white !important;
+}
+
+.btn-danger {
+    font-family: open sans;
+    margin-right: 10px;
+    padding: 8px 20px;
+    background-color: red;
+    color: white !important;
+}
+
+.btn-info-sm {
+    font-family: open sans;
+    margin-right: 10px;
+    padding: 4px 20px;
+    background-color: royalblue;
+    color: white !important;
+    font-size: 14px;
+}
+
+.btn-danger-sm {
+    font-family: open sans;
+    margin-right: 10px;
+    padding: 4px 20px;
+    background-color: rgb(218, 32, 32);
+    color: white !important;
+    font-size: 14px;
+}
+
+.btn-info:hover {
+    background-color: rgb(0, 0, 0);
+    transition: .4s ease-in-out;
+}
+
+.btn-gray {
+    color: rgb(100, 100, 100) !important;
+}
+
+.btn-blue {
+    color: royalblue;
+}
+
+.container {
+    width: 100%;
+}
+
+.inner-first-container {
+    height: 50vh;
+    background-color: rgb(233, 233, 233);
+}
+
+.inner-first-container img {
+    height: 50vh;
+    width: 100%;
+}
+
+.inner-second-container {
+    margin-left: 10%;
+    width: 80%;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    padding-left: 20px;
+}
+
+.username h4 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-top: -10px;
+}
+
+.btn-sm {
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.username .bio {
+    padding-top: 2px;
+    font-family: open sans;
+    font-size: 12px;
+    color: rgb(88, 88, 88);
+}
+
+.user-profile-img {
+    padding: 2px;
+    margin-top: -80px;
+    background-color: white;
+    border-radius: 100px;
+}
+
+.edit-profile-btn {
+    display: flex;
+    margin-left: 45%;
+}
+
+.inner-third-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 4%;
+    width: 100%;
+}
+
+.feed-container {
+    margin-bottom: 100px;
+    /* margin-top: 40px; */
+    width: 30%;
+}
+
+.post-card {
+    margin-bottom: 20px;
+    background-color: rgb(228, 228, 228);
+    width: 100%;
+    /* height: 60vh; */
+    border-radius: 10px;
+}
+
+.post-card-upper {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.post-card-upper .edit-post {
+    display: flex;
+}
+
+.post-card-upper img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: rgb(190, 190, 190);
+    padding: 2px;
+}
+
+.post-card-upper .text {
+    width: 70%;
+    padding-left: 20px;
+    font-family: open sans;
+}
+
+.post-card-upper .text h4 {
+    font-family: open sans;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.post-card-upper .text p {
+    font-family: open sans;
+    font-size: 10px;
+    color: rgb(99, 99, 99);
+}
+
+.post-card-main {
+    width: 100%;
+}
+
+.post-card-main img {
+    padding: 5px 0px;
+    width: 100%;
+}
+
+.post-card-lower {
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.btns {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.counts {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-info {
+    color: rgb(39, 39, 39);
+    font-family: open sans;
+}
+
+.fa-trash {
+    color: red;
+    padding-left: 20px;
+}
+
+.empty-error {
+    margin-bottom: 100px;
+    color: red;
+    font-size: 2rem;
+    padding: 50px;
+}
+
+.post-title {
+    font-family: open sans;
+    padding: 10px;
+}
+
+
+/* Tournament Container */
+
+.tournament-container {
+    width: 25%;
+}
+
+.tournament-card {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(228, 228, 228);
+    width: 100%;
+    /* height: 60vh; */
+    border-radius: 10px;
+}
+
+.t-card-upper {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.t-card-upper img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: rgb(190, 190, 190);
+    padding: 2px;
+}
+
+.t-card-upper .text {
+    width: 60%;
+    padding-left: 10px;
+}
+
+.text h4 {
+    font-family: open sans;
+}
+
+.text p {
+    font-family: open sans;
+    color: gray;
+    font-size: 10px;
+}
+
+.t-card-main {
+    padding: 5px 15px;
+}
+
+.t-card-main p {
+    font-family: open sans;
+    font-size: 14px;
+    color: rgb(75, 75, 75);
+}
+
+.t-card-main a {
+    font-family: open sans;
+}
+
+.t-card-main p a:hover {
+    transition: 0.4s step-end;
+    border-bottom: 2px solid royalblue;
+}
+
+.t-card-lower {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.add-post {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+
+/* Friend Card */
+
+.count {
+    font-size: 1rem;
+    padding-left: 5px;
+    color: gray;
+}
+
+.friend-card {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    background-color: rgb(228, 228, 228);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.friend-card .username {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-left: -20px;
+}
+
+.friend-card .username img {
+    width: 50px;
+    border-radius: 100px;
+}
+
+.friend-card .username p {
+    font-size: 1rem;
+    padding-left: 5px;
+    font-family: open sans;
+}
+
+.friend-card .actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.friend-card .actions a {
+    width: 120px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 10px;
+}

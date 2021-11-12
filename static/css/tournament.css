@@ -1,0 +1,318 @@
+/* ======================================= */
+
+.badge {
+    background-color: #FB0A36;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 10px;
+    font-family: open sans;
+    font-weight: normal;
+    font-size: 0.7rem;
+}
+
+.banner {
+    width: 100%;
+    background-color: #111327;
+    height: 300px;
+    padding-top: 130px;
+}
+
+.banner h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.banner p {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+}
+
+.banner a {
+    padding: 0 5px;
+    color: white;
+}
+
+.banner a:hover {
+    color: #272C4E;
+}
+
+
+/* Banner Area Start */
+
+
+/* BAnner Area End */
+
+
+/* ======================================== */
+
+
+/* Tournament START */
+
+.container {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.container .upper-container {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.upper-container .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upper-container .inner button {
+    font-family: open sans;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: rgb(37, 37, 37);
+    background-color: transparent;
+}
+
+.container .upper-container .inner h2 {
+    color: #111327;
+    font-family: open sans;
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.container .upper-container .inner h2 span {
+    color: rgb(51, 51, 51);
+    font-size: 1.2rem;
+}
+
+.filter-box {
+    margin-left: 0;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: rgb(224, 224, 224);
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#FilterForm {
+    display: none;
+}
+
+.filter-box .col {
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.filter-box .col h4 {
+    font-family: open sans;
+    padding-bottom: 10px;
+}
+
+.filter-box .col select {
+    margin-top: 10px;
+    font-family: open sans !important;
+    padding: 10px 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+option {
+    font-family: open sans !important;
+}
+
+.btn-filter {
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-family: open sans !important;
+    cursor: pointer;
+}
+
+.btn-filter:hover {
+    background-color: royalblue;
+}
+
+.main-container {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
+    padding: 20px;
+    font-family: open sans !important;
+}
+
+.main-container img {
+    width: 30%;
+    border-radius: 10px;
+}
+
+.main-container .text {
+    margin-left: 20px;
+    font-family: open sans !important;
+}
+
+.filtered {
+    font-family: open sans;
+    padding-top: 20px;
+    margin: 0px 10%;
+    font-size: 1.5rem;
+    color: royalblue;
+}
+
+.para {
+    margin-left: 10%;
+    font-family: open sans;
+}
+
+.main-container .text h3 {
+    font-family: open sans !important;
+    font-size: 1.5rem;
+}
+
+.main-container .text h3 span {
+    color: gray;
+    font-size: 14px;
+    font-family: open sans;
+    font-weight: normal;
+}
+
+.main-container .text p {
+    margin-top: 10px;
+    font-family: open sans;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(49, 49, 49);
+}
+
+.attr {
+    padding-top: 10px;
+}
+
+.main-container .text .attr span {
+    font-family: open sans !important;
+    font-weight: bold;
+}
+
+.attr .date {
+    margin-right: 20px;
+    font-family: open sans;
+}
+
+
+/* TOURNAMENT END */
+
+
+/* Email Section Start */
+
+.btn {
+    border: none;
+    outline: none;
+}
+
+.email {
+    background-color: #272C4E;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+    display: flex;
+}
+
+.email-title {
+    color: white;
+    font-size: 25px;
+    letter-spacing: 3px;
+    margin-left: 15%;
+    margin-right: 5%;
+}
+
+form {
+    margin-left: 15%;
+}
+
+input {
+    /* margin-left: 10%; */
+    width: 350px;
+    padding: 15px 10px;
+    background-color: #111327;
+    border-radius: 20px;
+    color: white;
+    border: 1px black solid;
+}
+
+input:focus {
+    outline: none;
+    border: 2px white solid;
+}
+
+.messages {
+    width: 100%;
+}
+
+.message {
+    padding: 20px;
+    background-color: lightgreen;
+}
+
+.empty {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empty p {
+    font-family: open sans;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: red;
+}
+
+
+/* Email Section End */
+
+@media (max-width:768px) {
+    .navbar {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+        height: 300px;
+    }
+    .nav-links {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+    }
+    .nav-links li {
+        padding: 10px;
+    }
+    .logo {
+        margin-left: -30%;
+    }
+    .burger {
+        top: 3%;
+        display: block;
+    }
+    .v-nav-resp {
+        opacity: 0;
+    }
+    .h-nav-resp {
+        height: 72px;
+    }
+    .account {
+        padding-top: 20px;
+        flex-direction: column;
+        margin-left: -10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .account-links {
+        padding-bottom: 20px;
+    }
+}

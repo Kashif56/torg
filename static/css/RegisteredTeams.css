@@ -1,0 +1,26 @@
+.container {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    width: 70%;
+    background-color: rgb(241, 241, 241);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+th {
+    font-family: open sans;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 2px black solid;
+    background-color: royalblue;
+}
+
+td {
+    padding: 0px 50px;
+    font-family: open sans;
+}

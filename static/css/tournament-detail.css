@@ -1,0 +1,407 @@
+/* ======================================= */
+
+.banner {
+    width: 100%;
+    background-color: #111327;
+    height: 300px;
+    padding-top: 130px;
+}
+
+.banner h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.banner p {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+}
+
+.banner a {
+    padding: 0 5px;
+    color: white;
+}
+
+.banner a:hover {
+    color: #272C4E;
+}
+
+
+/* Banner Area Start */
+
+
+/* BAnner Area End */
+
+
+/* ======================================== */
+
+.detail-container {
+    margin: 10% 20%;
+    width: 60%;
+}
+
+.detail-container img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.text {
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user img {
+    margin-right: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.user p {
+    color: royalblue !important;
+    font-weight: bold;
+}
+
+.text p {
+    /* font-family: open sans; */
+    color: rgb(80, 80, 80);
+    line-height: 30px;
+}
+
+.text span {
+    margin-left: 10px;
+    font-weight: bold;
+    color: royalblue;
+    font-family: open sans;
+}
+
+.text h4 {
+    font-family: open sans;
+    color: #111327;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.text h4 span {
+    font-family: open sans;
+    color: rgb(73, 73, 73);
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.text a {
+    font-family: open sans;
+    margin-right: 30px;
+}
+
+.text a:hover {
+    transition: 1s;
+    color: rgb(0, 0, 0);
+}
+
+.paginate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+.previous {
+    padding: 8px 20px;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    background-color: royalblue;
+    margin-right: 50px;
+}
+
+.previous:hover {
+    color: white;
+    background-color: #111327;
+}
+
+.next {
+    border-radius: 5px;
+    padding: 8px 20px;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    background-color: royalblue;
+    margin-left: 50px;
+}
+
+.next:hover {
+    color: white;
+    background-color: #111327;
+}
+
+.page {
+    padding: 5px 10px;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: gray;
+    margin: 2px;
+}
+
+.page:hover {
+    background-color: royalblue;
+    color: white;
+}
+
+.current {
+    background-color: royalblue;
+    color: white;
+}
+
+
+/* Featured Tournament End */
+
+
+/* Email Section Start */
+
+.btn {
+    border: none;
+    outline: none;
+}
+
+.email {
+    background-color: #272C4E;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+    display: flex;
+}
+
+.email-title {
+    color: white;
+    font-size: 25px;
+    letter-spacing: 3px;
+    margin-left: 15%;
+    margin-right: 5%;
+}
+
+form {
+    margin-left: 15%;
+}
+
+input {
+    /* margin-left: 10%; */
+    width: 350px;
+    padding: 15px 10px;
+    background-color: #111327;
+    border-radius: 20px;
+    color: white;
+    border: 1px black solid;
+}
+
+input:focus {
+    outline: none;
+    border: 2px white solid;
+}
+
+.messages {
+    width: 100%;
+}
+
+.message {
+    padding: 20px;
+    background-color: lightgreen;
+}
+
+.empty {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empty p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.comment-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 100px;
+    width: 100%;
+}
+
+.comment-box {
+    width: 48%;
+}
+
+.comment-box h3 {
+    font-family: open sans;
+    font-size: 1.5rem;
+}
+
+.comment-box h3 span {
+    color: gray;
+    font-size: 14px;
+    font-family: open sans;
+}
+
+.comment {
+    margin-top: 10px;
+    background-color: rgb(245, 245, 245);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.comment .upper {
+    display: flex;
+    align-items: center;
+}
+
+.comment .upper img {
+    width: 50px;
+    border-radius: 100px;
+}
+
+.comment .upper a {
+    font-family: open sans;
+    margin-left: 10px;
+    font-size: 1.2rem;
+}
+
+.comment .upper p {
+    margin-left: 5px;
+    color: gray;
+    font-family: open sans;
+    font-size: 12px;
+}
+
+.comment .lower {
+    margin-top: 10px;
+}
+
+.comment .lower p {
+    font-family: open sans;
+    color: rgb(63, 63, 63);
+}
+
+
+/* Comment Input */
+
+.comment-input {
+    padding: 10px;
+    width: 48%;
+}
+
+.comment-input h3 {
+    font-family: open sans;
+    font-size: 1.5rem;
+}
+
+.input {
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.input form {
+    margin-left: 0px;
+}
+
+.input textarea {
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    padding: 10px;
+    font-family: open sans;
+    outline: none;
+    border: none;
+}
+
+.input textarea:focus {
+    border: 1px gray solid;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.actions p {
+    font-family: open sans;
+}
+
+.actions span {
+    font-family: open sans;
+}
+
+.actions p i {
+    color: royalblue;
+}
+
+.actions a {
+    color: white;
+    background-color: gray;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 50px;
+    margin-left: 30px;
+}
+
+.actions a:hover {
+    background-color: #111327;
+}
+
+.actions .btn-info {
+    background-color: royalblue;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+/* Email Section End */
+
+@media (max-width:768px) {
+    .navbar {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+        height: 300px;
+    }
+    .nav-links {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+    }
+    .nav-links li {
+        padding: 10px;
+    }
+    .logo {
+        margin-left: -30%;
+    }
+    .burger {
+        top: 3%;
+        display: block;
+    }
+    .v-nav-resp {
+        opacity: 0;
+    }
+    .h-nav-resp {
+        height: 72px;
+    }
+    .account {
+        padding-top: 20px;
+        flex-direction: column;
+        margin-left: -10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .account-links {
+        padding-bottom: 20px;
+    }
+}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}"> {% endblock css %} {% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+
+<!-- Contetn Here -->
+{% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>COMPLETE PROFILE</h2>
+    <p><a href="">HOME</a> > <a href="">COMPLETE PROFILE</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+<br><br><br>
+<section class="container">
+    <div class="image">
+        <img src="{% static 'img/account.jpg' %}">
+    </div>
+    <div class="register-form">
+        <form action="." method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name">Profile Image:</label><br>
+            <!-- name -->
+            {{ form.profile_image }}
+
+            <br><br>
+
+
+            <label for="name">Name:</label><br>
+            <!-- name -->
+            {{ form.name }}
+            <br>
+            <br>
+            <label for="contact">Contact Number:</label><br>
+            <!-- Contact Number -->
+            {{ form.contact }}
+
+            <br>
+            <div class="flex-items">
+                <label for="organizer" class="organizer-label">Become an Organizer:</label>
+                <div class="item">
+                    {{ form.organizer }}
+                </div>
+            </div>
+            <br>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</section>
+
+
+
+{% endblock %}

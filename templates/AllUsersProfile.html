@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+<!-- Load static -->
+{% load static %}
+<!-- Css -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/UserProfile.css' %}"> {% endblock %}
+
+<!-- Main -->
+{% block content %}
+<div class="container">
+    <div class="inner-first-container">
+        <img src="{% static 'img/Pubg-1.jpg' %}">
+    </div>
+    <div class="inner-second-container">
+        <div class="user-info">
+            <!-- Default Image -->
+            {% if user.profile_image %}
+            <img width="150px" height="150px" class="user-profile-img" src="{{ user.profile_image.url }}"> {% else %}
+            <img width="150px" height="150px" class="user-profile-img" src="{% static 'img/Pubg.jpeg' %}"> {% endif %}
+            <div class="username">
+                {% if user.name %}
+                <h4>
+                    {{ user.name }}
+                </h4>
+                {% else %}
+                <h4>{{ user.user.username }}
+                </h4>
+                {% endif %}
+                <!-- If user has Bio -->
+                {% if user.bio %}
+                <p class="bio">{{ user.bio }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Account Info Buttons -->
+            <div class="edit-profile-btn">
+                {% if user.user == request.user %}
+                <a href="{% url 'account:Update_Profile' request.user %}" class="btn btn-info">Edit Profile</a> {% endif %}
+                <a href="" class="btn btn-info">Follow</a>
+            </div>
+        </div>
+    </div>
+    <div class="inner-third-container">
+        <div class="feed-container">
+            {% for post in user_posts %}
+            <div class="post-card">
+                <div class="post-card-upper">
+                    {% if post.user.userprofile.profile_image %}
+                    <img src="{{ post.user.userprofile.profile_image.url }}"> {% endif %}
+                    <div class="text">
+                        <!-- Shows profile name if exists else username -->
+                        {% if post.user.userprofile.name %}
+                        <h4>{{ post.user.userprofile.name }}</h4>
+                        {% else %}
+                        <h4>{{ post.user.username }}</h4>
+                        {% endif %}
+                        <p>{{ post.timestamp | timesince }} ago</p>
+                    </div>
+                    {% if post.user == request.user %}
+                    <div class="edit-post">
+                        <a href=""><i class="fa fa-edit"></i></a>
+                        <a href=""><i class="fa fa-trash"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="post-card-main">
+                    <p class="post-title">{{ post.title }}</p>
+                    <img src="{{ post.image.url }}">
+                </div>
+                <div class="post-card-lower">
+                    <!-- Like, Comment and share Counts -->
+                    <div class="counts">
+                        <span style="color: royalblue;"><i class="fa fa-thumbs-up"></i> {{ post.likes.count }}</span>
+                        <span style="color: royalblue;"><i class="fa fa-comment"></i> 5</span>
+                        <span style="color: royalblue;"><i class="fa fa-share"></i> 5</span>
+                    </div>
+
+                    <hr>
+
+                    <!-- Like, Comment and Share Buttons -->
+                    <div class="btns">
+                        <a href="" class="btn-gray"><i class="fa fa-thumbs-up"></i> Like</a>
+                        <a href="" class="btn-gray"><i class="fa fa-comment"></i> Comment</a>
+                        <a href="" class="btn-gray"><i class="fa fa-share"></i> Share</a>
+                    </div>
+                </div>
+
+            </div>
+            {% empty %}
+            <h3 class="empty-error">No Post Created</h3>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

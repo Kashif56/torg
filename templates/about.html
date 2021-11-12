@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}"> {% endblock css %}
+
+<!-- Active Class -->
+{% block aboutus %} class='active' {% endblock %}
+<!-- Username -->
+{% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+
+
+
+<!-- Content -->
+{% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>ABOUT US</h2>
+    <p><a href="{% url 'core:Home' %}">HOME</a> > <a href="{% url 'core:about-us' %}">ABOUT US</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+
+<section class="container">
+    <div class="image">
+        <img src="{% static 'img/aboutus.jpg' %}">
+    </div>
+    <div class="register-form">
+        <h4>T-Org</h4>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa iste neque ea in pariatur voluptatibus ipsam maxime. Ipsam tempora ex sed modi libero, officia aspernatur soluta suscipit eum at? Esse voluptatem nihil numquam quidem quas deleniti rerum quae<br><br>            fuga nisi repellendus, earum delectus voluptate odit quaerat voluptas dolorum mollitia cum! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione doloribus dicta delectus officia, explicabo deserunt molestiae distinctio voluptas
+            voluptatibus nesciunt praesentium porro esse ipsam iure ut necessitatibus, quia, ex quis?
+        </p>
+    </div>
+</section>
+
+
+
+{% endblock %}

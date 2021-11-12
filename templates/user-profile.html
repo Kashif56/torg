@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/user-profile.css' %}"> {% endblock css %} {% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+
+<!-- Content Here -->
+{% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>PROFILE</h2>
+    <p><a href="">HOME</a> > <a href="">PROFILE</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+<h2 class="subtitle">Profile</h2>
+<section class="container">
+    <div class="full_name">
+        <p class="info">Kashif</p>
+        <p class="info">Mehmood</p>
+    </div>
+    <div class="username">
+        <p class="info">Kashif1234</p>
+        <p class="info">Kashif@gmail.com</p>
+    </div>
+    <div class="password">
+        <p class="info">Kashif1234</p>
+    </div>
+    <div class="btns">
+        <a href="" class="btn btn-primary">Edit Profile</a>
+    </div>
+</section>
+
+
+
+{% endblock %}

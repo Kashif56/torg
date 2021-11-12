@@ -1,0 +1,97 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- CSS HERE -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/tournament.css' %}"> {% endblock css %}
+<!-- CSS HERE -->
+{% block class %} class='active' {% endblock class %} {% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+
+<!-- CONTENT HERE -->
+{% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>TOURNAMENT</h2>
+    <p><a href="{% url 'core:Home' %}">HOME</a> > <a href="{% url 'core:Tournaments' %}">TOURNAMENT</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+
+
+
+
+<!-- Tournaments Area Start -->
+<section class="featured">
+    <div class="featured-title">
+        <h2 class="subtitle">TOURNAMENTS</h2>
+    </div>
+    {% if tournaments %}
+    <div class="pagination">
+        {% if query == 'Free' %}
+        <p>
+            <a class="" href="{% url 'core:Tournaments' %}">All</a> |
+            <a class="activated" href="{% url 'core:TournamentQuery' Free %}"> Free</a> |
+            <a href="{% url 'core:TournamentQuery' Paid %}"> Paid</a>
+        </p>
+        {% elif query == 'Paid' %}
+        <p>
+            <a class="" href="{% url 'core:Tournaments' %}">All</a> |
+            <a class="" href="{% url 'core:TournamentQuery' 'Free' %}"> Free</a> |
+            <a class="activated" href="{% url 'core:TournamentQuery' 'Paid' %}"> Paid</a>
+        </p>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div class="flex-container">
+        {% for t in tournaments %}
+        <a href="{{ t.get_absolute_url }}">
+            <div class="container">
+                <img src="{{ t.image.url }}">
+                <div class="text">
+                    <a href="{{ t.get_absolute_url }}">
+                        <h4>{{ t.title }} {% if t.is_featured %}
+                            <span class="badge">Featured</span> {% endif %}
+                        </h4>
+
+                    </a>
+                    <p>Prize Pool:
+                        <small>${{ t.prize_pool }}</small>
+                    </p>
+                </div>
+            </div>
+        </a>
+        {% empty %}
+        <div class="empty">
+            <p>Sorry, Currently there is no {{ query }} Tournament!</p>
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+</section>
+
+<div class="paginate">
+    {% if tournaments %} {% if tournaments.has_previous %}
+    <a href="?page={{ tournaments.previous_page_number }}" class="previous btn">Previous</a> {% endif %} {% if tournaments.has_next %}
+    <a href="?page={{ tournaments.next_page_number }}" class="next btn">Next</a> {% endif %} {% endif %}
+</div>
+
+
+<!-- Tournaments End -->
+
+<!-- Email Secion STart -->
+<section class="email">
+    <h3 class="email-title">Stay Updated</h3>
+    <form action="">
+        <input type="email" placeholder="Enter Your Email">
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+    </form>
+</section>
+
+
+<!-- Email Sectuo End -->
+
+{% endblock content %}

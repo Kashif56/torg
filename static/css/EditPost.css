@@ -1,0 +1,93 @@
+.btn-info {
+    margin-right: 10px;
+    padding: 8px 20px;
+    background-color: royalblue;
+    color: white !important;
+}
+
+.btn-primary {
+    margin-left: 33%;
+    width: 33%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    font-family: open sans;
+    margin-right: 10px;
+    padding: 8px 20px;
+    background-color: red;
+    color: white !important;
+}
+
+.btn-info-sm {
+    font-family: open sans;
+    margin-right: 10px;
+    padding: 4px 20px;
+    background-color: royalblue;
+    color: white !important;
+    font-size: 14px;
+}
+
+.btn-danger-sm {
+    font-family: open sans;
+    margin-right: 10px;
+    padding: 4px 20px;
+    background-color: rgb(218, 32, 32);
+    color: white !important;
+    font-size: 14px;
+}
+
+.btn-info:hover {
+    background-color: rgb(0, 0, 0);
+    transition: .4s ease-in-out;
+}
+
+.btn-gray {
+    color: rgb(100, 100, 100) !important;
+}
+
+.main-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container h2 {
+    font-size: 2.5rem;
+    padding-bottom: 20px;
+    color: #272C4E;
+}
+
+.form-container {
+    padding: 50px;
+    width: 50%;
+    background-color: rgb(221, 221, 221);
+    border-radius: 10px;
+}
+
+label {
+    font-size: 1.2rem;
+    font-family: open sans;
+}
+
+form input {
+    padding: 0px 10px;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    width: 95%;
+    font-family: open sans;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+form img {
+    margin-top: 10px;
+    width: 95%;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}

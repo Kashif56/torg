@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: white;
+}
+
+.navbar {
+    position: sticky !important;
+    background-color: #33D98D;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 15vh;
+}
+
+.logo {
+    margin-left: 10%;
+    width: 100px;
+    height: 12vh;
+    margin-right: 5%;
+}
+
+a {
+    text-decoration: none;
+    color: royalblue;
+}
+
+.logo a h1 {
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.nav-links {
+    align-items: center;
+    margin-left: 180px;
+    display: flex;
+}
+
+.nav-links li {
+    list-style: none;
+    padding: 0 20px;
+}
+
+.nav-links a {
+    padding: 4px 0px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+    color: white;
+    font-size: 20px;
+    transition: 0.4s ease-in-out;
+}
+
+.active {
+    color: white;
+    border-bottom: 2px white solid;
+}
+
+.burger {
+    display: none;
+    position: absolute;
+    top: 5%;
+    right: 4%;
+    cursor: pointer;
+}
+
+.line {
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    height: 5px;
+    margin: 5px;
+}
+
+.account {
+    display: flex;
+    margin-left: 200px;
+}
+
+.account-links {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.account a {
+    padding: 10px 20px;
+    border: 2px white solid;
+    border-radius: 20px;
+}
+
+
+/* Utility Classes */
+
+.btn-primary {
+    text-decoration: none;
+    padding: 15px 100px;
+    background-color: #FB0A36;
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-left: 80px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transition: 0.4s ease-out;
+    background-color: #272C4E;
+}
+
+.item-link {
+    text-decoration: none;
+    color: black;
+}
+
+.subtitle {
+    margin: 5% 0;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: #272C4E;
+}
+
+.btn {
+    outline: none;
+    border: none;
+}
+
+
+/* Utilities CLasses END */
+
+
+/* ======================================= */
+
+.banner {
+    width: 100%;
+    background-color: #1FB973;
+    height: 300px;
+    padding-top: 130px;
+}
+
+.banner h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.banner p {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+}
+
+.banner a {
+    padding: 0 5px;
+    color: white;
+}
+
+.banner a:hover {
+    color: #272C4E;
+}
+
+
+/* Banner Area Start */
+
+
+/* BAnner Area End */
+
+
+/* ======================================== */
+
+
+/* Register Form Area Start */
+
+.container {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10%;
+}
+
+.image {
+    margin-left: 10%;
+    width: 40%;
+    margin-top: 5%;
+}
+
+.image img {
+    width: 100%;
+}
+
+.messages {
+    width: 100%;
+}
+
+.message {
+    padding: 20px;
+    background-color: lightgreen;
+}
+
+.register-form {
+    width: 40%;
+    margin-left: 5%;
+}
+
+input {
+    margin: 15px 0;
+    width: 400px;
+    padding: 10px;
+    outline-color: gray;
+}
+
+input:focus {
+    outline-color: #272C4E;
+}
+
+
+/* Register Form Area End */
+
+
+/* Footer */
+
+footer {
+    display: flex;
+    background-color: #33D98D;
+    height: 40vh;
+}
+
+.Follow {
+    width: 25%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 10%;
+    line-height: 40px;
+}
+
+.Follow li {
+    list-style: none;
+}
+
+.Follow a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.Follow a:hover {
+    font-size: 18px;
+}
+
+.title {
+    letter-spacing: 3px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    list-style: none;
+}
+
+.contact {
+    width: 25%;
+    margin-left: 7%;
+    margin-top: 3%;
+    line-height: 40px;
+}
+
+.contact li {
+    color: white;
+    list-style: none;
+}
+
+.contact a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.contact a:hover {
+    font-size: 18px;
+}
+
+.methods {
+    width: 25%;
+    margin-top: 3%;
+    margin-left: 10%;
+    line-height: 40px;
+}
+
+.methods li {
+    color: white;
+    list-style: none;
+}
+
+@media (max-width:768px) {
+    .navbar {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+        height: 300px;
+    }
+    .nav-links {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+    }
+    .nav-links li {
+        padding: 10px;
+    }
+    .logo {
+        margin-left: -30%;
+    }
+    .burger {
+        top: 3%;
+        display: block;
+    }
+    .v-nav-resp {
+        opacity: 0;
+    }
+    .h-nav-resp {
+        height: 72px;
+    }
+    .account {
+        padding-top: 20px;
+        flex-direction: column;
+        margin-left: -10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .account-links {
+        padding-bottom: 20px;
+    }
+}

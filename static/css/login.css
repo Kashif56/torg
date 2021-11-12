@@ -1,0 +1,130 @@
+/* ======================================= */
+
+.banner {
+    width: 100%;
+    background-color: #1FB973;
+    height: 300px;
+    padding-top: 130px;
+}
+
+.banner h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.banner p {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+}
+
+.banner a {
+    padding: 0 5px;
+    color: white;
+}
+
+.banner a:hover {
+    color: #272C4E;
+}
+
+
+/* Banner Area Start */
+
+
+/* BAnner Area End */
+
+
+/* ======================================== */
+
+
+/* Register Form Area Start */
+
+.container {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10%;
+}
+
+.messages {
+    width: 100%;
+}
+
+.message {
+    padding: 20px;
+    background-color: lightgreen;
+}
+
+.image {
+    margin-left: 10%;
+    width: 40%;
+}
+
+.image img {
+    width: 100%;
+}
+
+.register-form {
+    margin-top: 10%;
+    width: 40%;
+    margin-left: 5%;
+}
+
+input {
+    margin: 15px 0;
+    width: 400px;
+    padding: 10px;
+    outline-color: gray;
+}
+
+input:focus {
+    outline-color: #272C4E;
+}
+
+.register-form p {
+    letter-spacing: 1px;
+    margin-top: 50px;
+    margin-left: 90px;
+}
+
+
+/* Register Form Area End */
+
+@media (max-width:768px) {
+    .navbar {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+        height: 300px;
+    }
+    .nav-links {
+        flex-direction: column;
+        transition: all 1s ease-in-out;
+    }
+    .nav-links li {
+        padding: 10px;
+    }
+    .logo {
+        margin-left: -30%;
+    }
+    .burger {
+        top: 3%;
+        display: block;
+    }
+    .v-nav-resp {
+        opacity: 0;
+    }
+    .h-nav-resp {
+        height: 72px;
+    }
+    .account {
+        padding-top: 20px;
+        flex-direction: column;
+        margin-left: -10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .account-links {
+        padding-bottom: 20px;
+    }
+}

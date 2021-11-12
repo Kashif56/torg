@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+<!-- Load static -->
+{% load static %}
+<!-- Css -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/UserProfile.css' %}"> {% endblock %} {% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+
+<!-- Main -->
+{% block content %}
+<div class="container">
+    <div class="inner-first-container">
+        <img src="{% static 'img/Pubg-1.jpg' %}">
+    </div>
+    <div class="inner-second-container">
+        <div class="user-info">
+            <!-- Default Image -->
+            {% if user.profile_image %}
+            <img width="150px" height="150px" class="user-profile-img" src="{{ user.profile_image.url }}"> {% else %}
+            <img width="150px" height="150px" class="user-profile-img" src="{% static 'img/Pubg.jpeg' %}"> {% endif %}
+            <div class="username">
+                {% if user.name %}
+                <h4>
+                    {{ user.name }}
+                </h4>
+                {% else %}
+                <h4>{{ user.user.username }}
+                </h4>
+                {% endif %}
+                <!-- If user has Bio -->
+                {% if user.bio %}
+                <p class="bio">{{ user.bio }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Account Info Buttons -->
+            <div class="edit-profile-btn">
+                {% if user.user == request.user %}
+                <a href="{% url 'account:Update_Profile' request.user %}" class="btn btn-info">Edit Profile</a>
+                <a href="{% url 'account:Logout' %}" class="btn-danger">Logout</a> {% else %}
+
+                <!-- IF Followed or Not -->
+                {% if Followed == False %}
+                <a href="{% url 'account:FollowUser' user.user.id %}" class="btn btn-info">Follow</a> {% else %}
+                <a href="{% url 'account:FollowUser' user.user.id %}" class="btn btn-danger">UnFollow</a> {% endif %} {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+
+    {% if request.user == user.user %}
+    <div class="add-post">
+        <a href="{% url 'account:CreatePost' %}" class="btn btn-info"><i class="fa fa-plus"></i> Create Post</a>
+    </div>
+    {% endif %}
+
+    <div class="inner-third-container">
+
+
+
+        <div class="tournament-container">
+            {% for t in user.registered_in_tournaments.all %}
+            <div class="tournament-card">
+                <div class="t-card-upper">
+                    <img src="{{ user.profile_image.url }}">
+                    <div class="text">
+                        <!-- Shows profile name if exists else username -->
+                        <h4>{{ user.name }}</h4>
+
+
+                    </div>
+                    {% if user.user == request.user %}
+                    <div class="edit-post">
+                        <a href=""><i class="fa fa-edit"></i></a>
+                        <a href=""><i class="fa fa-trash"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="t-card-main">
+                    <p>{{ user.name }} registered team in {{ t.title }}. <br> You can register here : <a href="{% url 'core:Register_Team' t.id %}">Register Now</a>
+                    </p>
+
+                </div>
+                <div class="t-card-lower">
+                    <!-- Like Counts -->
+                    <div class="counts">
+                        <span style="color: royalblue;"><i class="fa fa-thumbs-up"></i> 5</span>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Like-->
+                    <div class="btns">
+                        <a href="" class="btn-gray"><i class="fa fa-thumbs-up"></i> Like</a>
+
+                    </div>
+                </div>
+            </div>
+
+            {% empty %}
+            <div class="tournament-card">
+                <p class="empty-error">Haven't registered in any Tournament.</p>
+            </div>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="feed-container">
+            {% for post in user_posts %}
+            <div class="post-card">
+                <div class="post-card-upper">
+                    {% if post.user.userprofile.profile_image %}
+                    <img src="{{ post.user.userprofile.profile_image.url }}"> {% endif %}
+                    <div class="text">
+                        <!-- Shows profile name if exists else username -->
+                        {% if post.user.userprofile.name %}
+                        <h4>{{ post.user.userprofile.name }}</h4>
+                        {% else %}
+                        <h4>{{ post.user.username }}</h4>
+                        {% endif %}
+                        <p>{{ post.timestamp | timesince }} ago</p>
+                    </div>
+                    {% if post.user == request.user %}
+                    <div class="edit-post">
+                        <a href="{% url 'account:EditPost' post.id %}"><i class="fa fa-edit"></i></a>
+                        <a href="{% url 'account:DeletePost' post.id %}"><i class="fa fa-trash"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="post-card-main">
+                    <p class="post-title">{{ post.title }}</p>
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}"> {% endif %}
+                    <br>
+                </div>
+                <div class="post-card-lower">
+                    <!-- Like, Comment and share Counts -->
+                    <div class="counts">
+                        <span style="color: gray">Likes : {{ post.likes.count }}</span>
+                        <span style="color: gray">Comments : 5</span>
+                        <span style="color:gray">Share : 5</span>
+                    </div>
+
+                    <hr>
+
+                    <!-- Like, Comment and Share Buttons -->
+
+                    <div class="btns">
+
+                        <a href="{% url 'account:LikePost' post.id %}" class="btn-gray"><i class="fa fa-thumbs-up"></i> Like</a>
+
+
+                        <!-- COmment and Share -->
+                        <a href="" class="btn-gray"><i class="fa fa-comment"></i> Comment</a>
+                        <a href="" class="btn-gray"><i class="fa fa-share"></i> Share</a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            {% empty %}
+            <h3 class="empty-error">No Post Created</h3>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="tournament-container">
+            {% if Follow_requests %}
+            <h2>Follow Requests <span class="count">( {{ Follow_requests.count }} )</span></h2>
+            <!-- Friend Requests -->
+            {% for request in Follow_requests %}
+            <div class="friend-card">
+                <div class="username">
+                    {% if request.from_user.profile_image %}
+                    <img src="{{ request.from_user.userprofile.profile_image.url }}"> {% else %}
+                    <img src="{% static 'img/user.svg' %}"> {% endif %}
+                    <p><b><a href="">{{ request.from_user.username }}</a></b> started follow you.</p>
+                </div>
+                <div class="actions">
+                    <a href="{% url 'account:FollowBackUser' request.id %}" class="btn btn-info-sm">Follow Back</a>
+                    <a href="{% url 'account:IgnoreUser' request.id %}" class="btn btn-danger-sm">Ignore</a>
+                </div>
+
+            </div>
+            {% endfor %} {% endif %}
+
+
+
+            <!-- Tournament -->
+
+            {% if user.tournaments %}
+
+            <h2>Tournaments</h2>
+            {% for t in user.tournaments.all %}
+            <div class="tournament-card">
+                <div class="t-card-upper">
+                    <img src="{{ user.profile_image.url }}">
+                    <div class="text">
+                        <!-- Shows profile name if exists else username -->
+                        <h4>{{ user.name }}</h4>
+                        <p>{{ t.date_created }}</p>
+                    </div>
+                    {% if user.user == request.user %}
+                    <div class="edit-post">
+                        <a href=""><i class="fa fa-edit"></i></a>
+                        <a href=""><i class="fa fa-trash"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="t-card-main">
+                    <p>{{ user.name }} have organized a Tournament.<br> You can register here : <a href="{% url 'core:Register_Team' t.id %}">Register Now</a>
+                    </p>
+
+                </div>
+                <div class="t-card-lower">
+                    <!-- Like Counts -->
+                    <div class="counts">
+                        <span style="color: royalblue;"><i class="fa fa-thumbs-up"></i> 5</span>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Like-->
+                    <div class="btns">
+                        <a href="" class="btn-gray"><i class="fa fa-thumbs-up"></i> Like</a>
+
+                    </div>
+                </div>
+            </div>
+
+            {% empty %}
+            <div class="tournament-card">
+                <p class="empty-error">No Tournaments Hosted</p>
+            </div>
+            {% endfor %} {% endif %}
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

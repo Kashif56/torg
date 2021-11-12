@@ -1,0 +1,132 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- CSS HERE -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/tournament.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% endblock css %}
+<!-- CSS HERE -->
+{% block class %} class='active' {% endblock class %} {% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+
+<!-- CONTENT HERE -->
+{% block content %}
+
+
+
+
+<!-- Tournaments Area Start -->
+<div class="container" style="margin-bottom: 200px;">
+    <div class="upper-container">
+        <div class="inner">
+            <h2>Tournaments <span> ( {{ tournaments.count }} )</span></h2>
+            <button onclick="myFunction()" class="btn filter">FILTERS <span><i class="fa fa-sort-desc"></i></span></button>
+        </div>
+
+        <form class="filter-box" id="FilterForm" action="" method="get">
+            <div class="col">
+                <h4>UPLOAD DATE</h4>
+
+                <select name="upload_date" id="">
+                    <option selected value="">Upload Date</option>
+                    <option value="this_weak">This Week</option>
+                    <option value="this_month">This Month</option>
+                    <option value="this_year">This Year</option>
+                </select>
+            </div>
+            <div class="col">
+                <h4>GAME MODE</h4>
+
+                <select name="game_mode" id="">
+                    <option selected value="">Game Mode</option>
+                    <option value="Solo">Solo</option>
+                    <option value="Duo">Duo</option>
+                    <option value="Squad">Squad</option>
+                    
+                </select>
+                <br>
+                <button class="btn btn-filter" type="submit">FILTER TOURNAMENT</button>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- TOurnaments -->
+    {% if query_result %}
+    <h5 class="filtered">Filtered Tournaments ( {{query_result.count}} )</h5>
+
+    {% for tournament in query_result %}
+
+    <div class="main-container">
+        <img src="{{ tournament.image.url }}">
+        <div class="text">
+            <h3><a href="{{ tournament.get_absolute_url }}">{{ tournament.title }}</a> <span>- by <a href="{% url 'account:UserProfile' tournament.user.id %}">{{ tournament.user.userprofile.name }}</a></span><span> - {{ tournament.date_created | timesince }} ago</span></h3>
+            <p>{{ tournament.description | slice:250|safe }} ...
+            </p>
+
+            <p class="attr">
+                <span class="date">
+                    {% if tournament.fee %}
+                    PKR {{ tournament.fee }}
+                    {% else %}
+                    Free
+                    {% endif %} - {{ tournament.game_mode }}</span>
+                <span class="date">{{ tournament.date_created | date }} - {{ tournament.last_date | date }}</span>
+                <span class="date">{{ tournament.slots }} Teams</span>
+                <span class="date">PKR {{ tournament.prize_pool }}</span>
+            </p>
+        </div>
+    </div>
+
+    {% empty %}
+    <h2>No Tournaments</h2>
+
+    {% endfor %} {% elif tournaments %} {% for tournament in tournaments %}
+    <div class="main-container">
+        <img src="{{ tournament.image.url }}">
+        <div class="text">
+            <h3><a href="{{ tournament.get_absolute_url }}">{{ tournament.title }}</a> <span>- by <a href="{% url 'account:UserProfile' tournament.user.id %}">{{ tournament.user.userprofile.name }}</a></span><span> - {{ tournament.date_created | timesince }} ago</span></h3>
+            <p>{{ tournament.description | slice:250|safe }} ...
+            </p>
+
+            <p class="attr">
+                <span class="date">
+                    {% if tournament.fee %}
+                    PKR {{ tournament.fee }}
+                    {% else %}
+                    Free
+                    {% endif %} - {{ tournament.game_mode  }}</span>
+                <span class="date">{{ tournament.date_created | date }} - {{ tournament.last_date | date }}</span>
+                <span class="date">{{ tournament.slots }} Teams</span>
+                <span class="date">PKR {{ tournament.prize_pool }}</span>
+            </p>
+        </div>
+    </div>
+    {% endfor %} {% endif %}
+</div>
+
+
+<!-- Tournaments End -->
+
+<!-- Email Secion STart -->
+<section class="email">
+    <h3 class="email-title">Stay Updated</h3>
+    <form action="">
+        <input type="email" placeholder="Enter Your Email">
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+    </form>
+</section>
+
+
+<script>
+    function myFunction() {
+        var div = document.getElementById('FilterForm');
+        if (div.style.display !== 'none') {
+            div.style.display = 'none';
+        } else {
+            div.style.display = 'flex';
+        }
+    };
+</script>
+
+<!-- Email Sectuo End -->
+
+{% endblock content %}

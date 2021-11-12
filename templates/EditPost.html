@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<!-- Load static -->
+{% load static %}
+<!-- Css -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/EditPost.css' %}"> {% endblock %} {% if request.user.is_authenticated %} {% block username %} {{ request.user.username }} {% endblock username %} {% endif %}
+<!-- Main Content -->
+{% block content %}
+
+<div class="main-container">
+    <h2>Edit Post</h2>
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="">Title:</label><br> {{ form.title }}
+
+            <label for="">Image:</label> <br> {{ form.image }}
+
+            <!-- Current Image -->
+            {% if post.image %}
+            <label for="">Current Image</label>
+            <img src="{{ post.image.url }}"> {% endif %}
+            <br>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

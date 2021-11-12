@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Organizing Platform</title>
+    <!-- Css Link -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% block css %} {% endblock css %}
+
+    <style>
+        .flex-items {
+            display: flexbox;
+            margin-top: 30px;
+        }
+        
+        .organizer-label {
+            font-size: 20px;
+        }
+        
+        .item {
+            margin-top: -30px;
+            margin-left: 50px;
+        }
+        
+        .active {
+            font-weight: bold;
+            /* color: #FB0A36 !important; */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar h-nav-resp">
+        <div class="logo">
+            <a href="{% url 'core:Home' %}">
+                <h1>T-ORG</h1>
+            </a>
+        </div>
+        <ul class="nav-links v-nav-resp">
+            <li><a href="{% url 'core:Tournaments' %}" {% block class %}{% endblock class %}>Tournament</a></li>
+            <li><a href="{% url 'core:about-us' %}" {% block aboutus %}{% endblock aboutus %}>About us</a></li>
+            <li><a href="" {% block contact %}{% endblock contact %}>Contact us</a></li>
+
+            {% if request.user.is_authenticated %}
+
+            <div class="logout">
+                {% if request.user.userprofile.organizer %}
+                <li class="logout-links">
+                    <a href="{% url 'dashboard:dashboard_home' %}"> <span><i class="fa fa-th-list" aria-hidden="true"></i></span> Dashboard</a>
+                </li>
+                {% endif %}
+
+                <li>
+                    <a href="{% url 'account:UserProfile' request.user.id %}" class="user"><span><i class="fa fa-user" aria-hidden="true"></i></span>  {% block username %}{% endblock %}</a>
+                </li>
+            </div>
+            {% else %}
+            <div class="account">
+                <li class="account-links"><a href="{% url 'account:Signup' %}">Sign up</a></li>
+                <li class="account-links"><a href="{% url 'account:Login' %}">Login</a></li>
+            </div>
+            {% endif %}
+        </ul>
+        <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+
+    {% if messages %} {% for message in messages %}
+    <div class="messages">
+        <p class="message">{{ message }}</p>
+    </div>
+    {% endfor %} {% endif %}
+
+    <!-- Content Here -->
+    {% block content %} {% endblock content %}
+
+
+    <!-- ========================== -->
+    <!-- Footer -->
+    <!-- ========================== -->
+    <footer>
+        <div class="Follow">
+            <ul>
+                <li class="title">Follow us</li>
+                <li><a href="">Facebook</a></li>
+                <li><a href="">Instagram</a></li>
+                <li><a href="">Twitter</a></li>
+                <li><a href="">YouTube</a></li>
+            </ul>
+        </div>
+        <div class="contact">
+            <ul>
+                <li class="title">Quick Links</li>
+                <li><a href="">Terms and Condition</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Refund Policy</a></li>
+                <li><a href="">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="methods">
+            <ul>
+                <li class="title">Contact Us</li>
+                <li>t_org@support.com</li>
+                <li>0544-XXXXX</li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+<script src="{% static 'js/home.js' %}"></script>
+
+</html>

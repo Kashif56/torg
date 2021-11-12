@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}"> {% endblock %} {% block content %}
+<!-- ------------------------- -->
+<!-- Header Banner Area Start -->
+<!-- ---------------------------- -->
+<section class="banner">
+    <h2>LOGIN</h2>
+    <p><a href="">HOME</a> > <a href="">LOGIN</a></p>
+</section>
+<!-- ------------------------- -->
+<!-- Header Banner Area ENd -->
+<!-- ---------------------------- -->
+
+<section class="container">
+    <div class="image">
+        <img src="{% static 'img/Login.jpg' %}">
+    </div>
+    <div class="register-form">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <input required type="text" placeholder="Username" name="username"><br>
+            <input required type="password" placeholder="Password" name="password"><br>
+            <button type="submit" class="btn-center btn btn-primary">Login</button>
+        </form>
+        <p>New to T-ORG? <a href="{% url 'account:Signup' %}">Create Account</a></p>
+    </div>
+</section>
+
+
+{% endblock %}

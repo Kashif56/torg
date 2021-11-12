@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Delete Confirmation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <style>
+        .bg-black {
+            background-color: rgb(37, 35, 35);
+        }
+        
+        .text-gray {
+            color: rgb(173, 173, 173);
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand ml-5" href="{% url 'dashboard:dashboard_home' %}">
+            <h1>Dashboard</h1>
+        </a>
+        <form class="form-inline mr-5">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %}
+
+    <!-- Main Body Start -->
+    <div class="d-flex flex-row bg-black pt-3 mb-5">
+        <!-- First Side -->
+        <div class="w-25 bg-black">
+            <ul class="list-unstyled ml-5 pl-3 text-white">
+                <li class="mb-3">
+                    <h4 class="text-primary">Tournaments</h4>
+                </li>
+                {% for x in objects %} {% if title == x.title %}
+                <li class="ml-3  mb-3">
+                    <a class="text-warning" href="{{ x.id }}/tournament-detail/">{{ x.title }}</a>
+                </li>
+                {% else %}
+                <li class="ml-3  mb-3">
+                    <a class="text-white" href="{{ x.id }}/tournament-detail/">{{ x.title }}</a>
+                </li>
+                {% endif %} {% empty %}
+                <li class="ml-3  mb-3">
+                    <span>Oops! No Tournaments</span><br>
+                    <a class="btn btn-success mt-2" href="{% url 'dashboard:db_create_tournament' %}"><span><i class="fa fa-plus-circle" aria-hidden="true"></i></span> Host Tournament </a>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <!-- Second Side -->
+        <div class="mb-5 mr-5 w-75">
+            <h3 class="text-primary">Confirm Removing Team</h3>
+            <form action="." method="POST">
+                {% csrf_token %}
+                <img height="300px" src="{% static 'img/Delete_Confirm.png' %}"> <br>
+                <label class="text-danger mt-4 h6" for="">Do you want to remove {{ team_name }} from {{ tournament }}</label> <br>
+
+                <button class="btn btn-danger mt-2" type="submit"><span><i class="fa fa-trash" aria-hidden="true"></i></span> Remove {{team_name}}</button>
+
+                <a href="{% url 'dashboard:db_tournament_team_detail' tournament team_name %}" class="btn btn-success mt-2 ml-4">Cancel</a>
+            </form>
+
+
+
+        </div>
+    </div>
+
+</body>
+
+<!-- Javascript -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</html>
