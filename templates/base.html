@@ -8,23 +8,24 @@
     <title>Tournament Organizing Platform</title>
     <!-- Css Link -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% block css %} {% endblock css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block css %} {% endblock css %}
 
     <style>
         .flex-items {
             display: flexbox;
             margin-top: 30px;
         }
-        
+
         .organizer-label {
             font-size: 20px;
         }
-        
+
         .item {
             margin-top: -30px;
             margin-left: 50px;
         }
-        
+
         .active {
             font-weight: bold;
             /* color: #FB0A36 !important; */
@@ -49,12 +50,14 @@
             <div class="logout">
                 {% if request.user.userprofile.organizer %}
                 <li class="logout-links">
-                    <a href="{% url 'dashboard:dashboard_home' %}"> <span><i class="fa fa-th-list" aria-hidden="true"></i></span> Dashboard</a>
+                    <a href="{% url 'dashboard:dashboard_home' %}"> <span><i class="fa fa-th-list"
+                                aria-hidden="true"></i></span> Dashboard</a>
                 </li>
                 {% endif %}
 
                 <li>
-                    <a href="{% url 'account:UserProfile' request.user.id %}" class="user"><span><i class="fa fa-user" aria-hidden="true"></i></span>  {% block username %}{% endblock %}</a>
+                    <a href="{% url 'account:UserProfile' request.user.id %}" class="user"><span><i class="fa fa-user"
+                                aria-hidden="true"></i></span> {% block username %}{% endblock %}</a>
                 </li>
             </div>
             {% else %}

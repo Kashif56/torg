@@ -153,6 +153,10 @@ def Login(request):
             if login_user is not None:
                 auth.login(request, login_user)
                 messages.success(request, "Logged in Successfully.")
+                if UserProfile.objects.filter(user=request.user).exists() == False:
+                    messages.info(
+                        request, 'Please Complete your Profile to proceed.')
+                    return redirect('account:Complete_Profile')
                 return redirect('core:Home')
             else:
                 messages.error(
