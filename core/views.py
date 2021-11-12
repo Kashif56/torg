@@ -25,7 +25,7 @@ one_week_ago = datetime.datetime.today() - datetime.timedelta(days=7)
 
 def Home(request):
     if request.user.is_authenticated:
-        if request.user.userprofile:
+        if UserProfile.objects.filter(user=request.user).exists():
             if request.user.userprofile.organizer == True and request.user.userprofile.is_verified == True:
                 return redirect('dashboard:dashboard_home')
             else:
@@ -89,7 +89,7 @@ def Tournaments(request):
             is_active=True, game_mode=game_mode
         )
     context['query_result'] = query_result
-    print(query_result)
+
     return render(request, 'tournament.html', context)
 
 
