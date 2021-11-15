@@ -101,8 +101,8 @@
                 <!-- Checking if request.user is same as Tournament Organizer -->
                 {% if request.user == obj.user %}
                 <a class="btn btn-primary" href="{% url 'dashboard:db_update_tournament' obj.id %}">Edit</a>
-                <a class="btn btn-danger" href="{% url 'dashboard:db_delete_tournament' obj.id %}">Delete</a> {% endif
-                %}
+                <a class="btn btn-danger" href="{% url 'dashboard:db_delete_tournament' obj.id %}">Delete</a>
+                {% endif %}
             </h3>
             <!-- Description -->
             <p class="text-gray">
