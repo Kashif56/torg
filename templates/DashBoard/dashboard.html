@@ -12,7 +12,7 @@
         .bg-black {
             background-color: rgb(37, 35, 35);
         }
-        
+
         .bg-dark1 {
             background-color: rgb(31, 31, 31);
         }
@@ -26,7 +26,8 @@
         </a>
         <ul class="nav justify-content-center mr-5">
             <li class="nav-item">
-                <a class="nav-link text-info" href="{% url 'dashboard:db_create_tournament' %}"><span><i class="fa fa-plus-circle"></i></span> Host Tournament </a>
+                <a class="nav-link text-info" href="{% url 'dashboard:db_create_tournament' %}"><span><i
+                            class="fa fa-plus-circle"></i></span> Host Tournament </a>
             </li>
             <li class="nav-item">
                 <a href="{% url 'core:Tournaments' %}" class="nav-link text-info">
@@ -37,7 +38,8 @@
                 <a href="" class="nav-link text-info"><span><i class="fa fa-mobile mr-1"></i></span>Contact us</a>
             </li>
             <li class="nav-item">
-                <a href="{% url 'account:UserProfile' request.user.id %}" class="nav-link text-info"><span><i class="fa fa-user mr-1"></i></span>Profile</a>
+                <a href="{% url 'account:UserProfile' request.user.id %}" class="nav-link text-info"><span><i
+                            class="fa fa-user mr-1"></i></span>Profile</a>
             </li>
         </ul>
 
@@ -53,7 +55,7 @@
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  <span>&times;</span>
+            <span>&times;</span>
         </button>
     </div>
     {% endfor %} {% endif %}
@@ -74,7 +76,8 @@
                 {% empty %}
                 <li class="ml-3  mb-3">
                     <span>Oops! No Tournaments</span><br>
-                    <a class="btn btn-success mt-2" href="{% url 'dashboard:db_create_tournament' %}"><span><i class="fa fa-plus-circle"></i></span> Host Tournament </a>
+                    <a class="btn btn-success mt-2" href="{% url 'dashboard:db_create_tournament' %}"><span><i
+                                class="fa fa-plus-circle"></i></span> Host Tournament </a>
                 </li>
                 {% endfor %}
 
@@ -92,14 +95,21 @@
             {% for y in objects %}
             <a href="{{ y.id }}/tournament-detail/">
                 <div class="card mb-5 mr-5 mt-5 bg-dark">
+                    {% if y.image %}
                     <img class="card-img-top" height="300px" src="{{ y.image.url }}">
+                    {% else %}
+                    <img src="https://cdn.vox-cdn.com/thumbor/x8cVeowwM-UA0WDwhIxxOufEuio=/0x0:1200x830/1200x800/filters:focal(505x22:697x214)/cdn.vox-cdn.com/uploads/chorus_image/image/63984432/PUBG_Mobile.0.jpg"
+                        height="300px" alt="" class="card-img-top">
+                    {% endif %}
                     <div class="card-body text-white">
                         <h5 class="card-title"><a href="{{ y.id }}/tournament-detail/">{{ y.title }}</a></h5>
                         <!-- <p class="card-text">{{ y.description|safe }}</p> -->
                         {% if y.last_updated %}
-                        <p class="card-text"><small class="text-muted">Last updated {{ y.last_updated | timesince }} ago</small></p>
+                        <p class="card-text"><small class="text-muted">Last updated {{ y.last_updated | timesince }}
+                                ago</small></p>
                         {% else %}
-                        <p class="card-text"><small class="text-muted">Created {{ y.date_created | timesince }} ago</small></p>
+                        <p class="card-text"><small class="text-muted">Created {{ y.date_created | timesince }}
+                                ago</small></p>
                         {% endif %}
                     </div>
                 </div>
@@ -108,7 +118,8 @@
             {% empty %}
             <img src="{% static 'img/oop.png' %}" width="300px" height="300px">
             <h5 class="text-danger">Oops! No Tournament Hosted</h5>
-            <a class="btn btn-success" href="{% url 'dashboard:db_create_tournament' %}"><span><i class="fa fa-plus-circle"></i></span> Host Tournament </a> {% endfor %}
+            <a class="btn btn-success" href="{% url 'dashboard:db_create_tournament' %}"><span><i
+                        class="fa fa-plus-circle"></i></span> Host Tournament </a> {% endfor %}
 
 
         </div>
@@ -117,8 +128,14 @@
 </body>
 
 <!-- Javascript -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 
 </html>
